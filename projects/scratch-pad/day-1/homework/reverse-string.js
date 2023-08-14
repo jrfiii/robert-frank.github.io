@@ -19,12 +19,23 @@
  *  d. how do you concatenate Strings? What operator do we use?
  */
 
+/**
+ * I: string
+ * O: the string in reverse order
+ * C: n/a
+ * E: n/a
+ */
+
+//declare a function that returns an input string in reverse order
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    //initialize an array literal to contain the character values of the input string
+    let arr = [];
+    // use of for loop to iterate through characters of input string
+    for (var i = input.length - 1; i >= 0; i--) {
+      arr.push(input[i]); //pushes each character of input to array in reverse order.
+    }
+    return arr.join(''); //joins the array, which is input reversed and returns the new string
     // YOUR CODE GOES ABOVE HERE //
 }
 
