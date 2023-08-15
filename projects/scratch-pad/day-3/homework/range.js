@@ -21,12 +21,20 @@
  *  b. you'll need a loop, which one is best?
  *  c. you'll wanna make use of the push() method of Array.
  */
+//declared function that accepts two numbers as parameters and returns all-inclusive range between the two
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    let arr = []; // local array to accept numbers as for loop iterates through range
+    if (start < end) { // ascending range if the start is less than the end
+        for (var i = start; i <= end; i++) {
+            arr.push(i);
+        }
+    } else if (start > end) { //descending range if the start is greater than the end
+        for (var i = start; i >= end; i--) {
+            arr.push(i); 
+        }
+    }
+    return arr; //returns completed range as an array.
     // YOUR CODE GOES ABOVE HERE //
 }
 
