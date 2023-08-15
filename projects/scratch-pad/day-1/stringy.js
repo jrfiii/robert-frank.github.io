@@ -230,7 +230,8 @@ function sortDescending(stringOne, stringTwo) {
 
     if (stringOne === stringTwo) { //tests for strict equality first
         return 0; //returns 0 if they are equal
-    } else if (toLowerCase(stringOne) > toLowerCase(stringTwo)) { //must convert strings to lower or upper case as they are evaluated differently in comparisons
+    } else if (toLowerCase(stringOne) > toLowerCase(stringTwo)) { 
+        //must convert strings to lower or upper case as they are evaluated differently in comparisons
         return 1; //returns 1 if stringTwo is closer to 'z' than stringOne
     } else { //returns -1 if stringOne is later in the alphabet
         return -1;

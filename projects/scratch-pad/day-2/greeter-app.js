@@ -33,11 +33,20 @@
  *      the exact case.
  */
 
+//function takes integer between 0 and 24 as parameter 'hour' and prints a greeting to the console
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    if (hour > 24 || hour < 0) { //defined an edge case if a invalid number is input into function
+        console.log('Invalid hour input');
+    } else if (hour <= 11) { // 0 to 11 inclusive is morning
+        console.log('Good Morning!');
+    } else if (hour <= 16) { // >11 to 16 is afternoon
+        console.log('Good Afternoon!');
+    } else if (hour <= 21) { // >16 to 21 is evening
+        console.log('Good Evening!');
+    } else { //greater than 21 to midnight (24) is night
+        console.log('Good Night!');
+    }  
     
     // YOUR CODE ABOVE HERE //
 }
