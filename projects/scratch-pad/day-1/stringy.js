@@ -15,7 +15,7 @@
 function length(string) {
     // YOUR CODE BELOW HERE //
     //return length property of input length
-    return string.length;
+    return string.length;   //length method will return the number of characters in the input string
     // YOUR CODE ABOVE HERE //
 }
 
@@ -86,7 +86,7 @@ function toDashCase(string) {
  * O: Boolean value whether the string begins with the given character
  * C: must evaluate lowercase and uppercase as equivalents
  * E: N/A
- * @param {j} string 
+ * @param {} string 
  * @param {*} char 
  */
 function beginsWith(string, char) {
@@ -133,7 +133,7 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    return stringOne + stringTwo; //Could also use concat(stringOne, stringTwo);
+    return stringOne + stringTwo; //simple addition operator to combine two input strings
     // YOUR CODE ABOVE HERE //
 }
 
@@ -182,7 +182,7 @@ function longest(stringOne, stringTwo) {
     } else if (stringTwo.length > stringOne.length) {
         return stringTwo;
     } else {
-        return 'Same Length'; //
+        return 'Same Length'; //returns this message if the two strings are equal length
     }
 
     // YOUR CODE ABOVE HERE //
