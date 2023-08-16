@@ -15,11 +15,8 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     return function(value) {    //returns a function that evaluates if a value is greater than the base input above.
-        if (value > base) {
-            return true; //returns a boolean after above expression is evaluated.
-        } else {
-            return false;
-        }
+        return value > base;
+        //returns a boolean after above expression is evaluated.
     }
     // YOUR CODE ABOVE HERE //
 }
@@ -33,11 +30,8 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     return function(value) {    //returns a function that evaluates if a value is less than the base input above.
-        if (value < base) {
-            return true; //returns a boolean after above expression is evaluated.
-        } else {
-            return false;
-        }
+        return value < base;
+        //returns a boolean after above expression is evaluated.
     }
     // YOUR CODE ABOVE HERE //
 }
@@ -52,11 +46,8 @@ function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     return function(string) {
         //tests if first character of string matches either upper or lower case startsWith character passed into above function
-        if(string[0] === startsWith.toLowerCase() || string[0] === startsWith.toUpperCase()) {
-            return true;
-        } else {
-            return false;
-        }
+        return (string[0] === startsWith.toLowerCase() || string[0] === startsWith.toUpperCase());
+        //returns boolean after strict equality comparison
     }
     // YOUR CODE ABOVE HERE //
 }
@@ -72,11 +63,8 @@ function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     return function(string) {
         //tests if last character of string matches either upper or lower case startsWith character passed into above function
-        if(string[string.length - 1] === endsWith.toLowerCase() || string[string.length - 1] === endsWith.toUpperCase()) {
-            return true;
-        } else {
-            return false;
-        }
+        return (string[string.length - 1] === endsWith.toLowerCase() || string[string.length - 1] === endsWith.toUpperCase());
+        //returns boolean value after strict equality comparison with or operator
     }
     // YOUR CODE ABOVE HERE //
 }
