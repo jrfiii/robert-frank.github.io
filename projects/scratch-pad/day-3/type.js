@@ -15,11 +15,10 @@
 //declared function to test if parameter passed into function is an array
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    if (Array.isArray(value)) { //cannot use typeof as that would only return 'object'
-        return true;
-    } else {
-        return false;
-    } 
+   
+    return (Array.isArray(value));  //cannot use typeof as that would only return 'object'
+    //above method already returns a boolean, so only need to return the result of that method
+   
     // YOUR CODE ABOVE HERE //
 }
 
@@ -31,19 +30,19 @@ function isArray(value) {
  * null, not an Array, not a Date - all of these will return 'object' if used 
  * with typeof.
  */
-//declared function to test if value is object.  requires long chained conditional to rule out several edge cases
+//declared function to test if value is object.  requires chained conditional to rule out several non-container object
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    if (value === null) { //testing directly for null as typeof null returns object.
-        return false;
-    } else if (isArray(value) === true) { //calling previously defined function to parse out this complex datatype whose typeof is also object
-        return false;
-    } else if (value instanceof Date === true) { //testing for date constructors as date() is also an object
-        return false;
-    } else if (typeof value === 'object') {
-        return true;
-    } else { //returns false for undefined and other simple datatypes
-        return false;
+    //because the typeof operator returns 'object' for several non-container datatypes, additional nested conditional statements required
+    if(typeof value === 'object') {
+        //use of or operator to rule out null, arrays, and dates
+        if (value === null || isArray(value) || (value instanceof Date)) {
+            return false;   //returns false even if the original typeof was true
+        } else {
+            return true; //only container objects should remain.
+        }
+    } else {
+        return false; //returns false for all other simple datatypes and otherwise that never returned object in initial typeof 
     }
     // YOUR CODE ABOVE HERE //
 }
@@ -57,11 +56,9 @@ function isObject(value) {
 //function declared to test if value is a collection
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    if (isArray(value) || isObject(value)) { //can use two previously declared functions to test for arrays or objects 
-        return true;
-    } else {
-        return false;
-    }
+
+    return (isArray(value) || isObject(value)); //can use two previously declared functions to test for arrays or objects 
+    //previous functions already return boolean, so just have to return their result
     
     // YOUR CODE ABOVE HERE //
 }
