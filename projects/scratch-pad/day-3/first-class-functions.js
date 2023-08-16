@@ -11,12 +11,16 @@
  * return a Function that tests whether a given value is greater than the 
  * base.
  */
+//declare function that accepts base parameter and returns function that tests whether a value is greater than base.
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(value) {    //returns a function that evaluates if a value is greater than the base input above.
+        if (value > base) {
+            return true; //returns a boolean after above expression is evaluated.
+        } else {
+            return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -24,13 +28,17 @@ function createGreaterThanFilter(base) {
  * Given an input base to test against, which could be a String or Number, 
  * return a Function that tests whether a given value is less than the 
  * base.
- */
+*/
+//declare function that accepts base parameter and returns function that tests whether a value is less than base.
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(value) {    //returns a function that evaluates if a value is less than the base input above.
+        if (value < base) {
+            return true; //returns a boolean after above expression is evaluated.
+        } else {
+            return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -39,12 +47,17 @@ function createLessThanFilter(base) {
  * Function that tests whether a given String starts with the startsWith 
  * character.
  */
+//function that returns a function that tests whether a string input starts with a given character.
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(string) {
+        //tests if first character of string matches either upper or lower case startsWith character passed into above function
+        if(string[0] === startsWith.toLowerCase() || string[0] === startsWith.toUpperCase()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -53,12 +66,18 @@ function createStartsWithFilter(startsWith) {
  * Function that tests whether a given String ends with the endsWith 
  * character.
  */
+
+//function that returns a function that tests whether a string input ends with a given character.
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(string) {
+        //tests if last character of string matches either upper or lower case startsWith character passed into above function
+        if(string[string.length - 1] === endsWith.toLowerCase() || string[string.length - 1] === endsWith.toUpperCase()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -71,10 +90,7 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+   
     // YOUR CODE ABOVE HERE //
 }
 
