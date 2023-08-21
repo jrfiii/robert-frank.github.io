@@ -53,6 +53,7 @@ let input;
 if (input !== 'PASSWORD') {
   //code block performed if input is anything other than 'PASSWORD'
 };
+
 !true // returns false, aka 'not true'
 
 // 5. Unary Operators
@@ -75,4 +76,5 @@ delete day; //deletes the variable day;
 // The only operator in JavaScript that takes 3 operands, a ternary operator has the form a ? b : c, where a is a conditional expression, which returns b if a resolves to true, or c if it resolves to false.
 
 input === 'password' ? unlock() : lock()
-// If the input is equal to the string 'password', function unlock is performed.  If the input is anything other than the string 'password', the function lock is invoked.
+// If the input is equal to the string 'password', function unlock is performed.  
+//If the input is anything other than the string 'password', the function lock is invoked.
