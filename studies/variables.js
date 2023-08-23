@@ -36,17 +36,16 @@ const pi = 3.14;  //this value cannot be re-assigned
 
 function doSomething() {
   var varTest = 'Hello from child scope';
-  let letTest = 'Hellow from child scope';
-  console.log(letTest); //this code block is the only place where the let variable is available.  It is locally-scoped to the function code block.
+  console.log(varTest); //this is the only place where the var variable is available.  It is function-scoped to the function code block.
 };
-console.log(varTest); //var is globally-scoped
-console.log(letTest); //let is block-scoped, so this variable is not visible
+// console.log(varTest); //var is function-scoped, so not visible in the global scope since it was declared in the function block 
+doSomething();
 
 
 // 3. Hoisting
 // Hoisting refers to the process that our higher-levl code undergoes when interpreted by a compiler.  In simple terms, function and var variable declarations are brought to the top of each scope.  Function declarations have precedent over variables, and the entire code block of a function is hoisted. Functions can be invoked anywhere because their declaration and ensuing code blocks are always hoisted.  However, with var variables, only the declaration is hoisted to the top.  That variable is assigned a value of 'undefined' until the assignment is encountered when executing the code. In a similar sense, functions expressions are only hoisted like variables, only the identifier is hoisted, not its assignment.
 
-console.log(x, y);  //expects undefined and type error
+// console.log(x, y);  //expects undefined and type error
 //x is undefined because it is a var variable, and its declaration is at least hoisted.  y is a let variable, so its declaration isn't hoisted, so the console.log does not have a variable y yet to access.
 var x = 2;
 let y = 3;
