@@ -97,8 +97,8 @@ Math.sqrt(-1); //returns 'NaN'
 // 10. Infinity and -Infinity
 // Infinity represents a number larger than all other numbers.  It is represented in JavaScript as "Infinity" or "Number.POSITIVE_INFINTIY". It is actually a property of the global object, or a variable representing infinity with global scope.
 
-Infinity > [All other positive integers]  //Infinity represents the largest integer
--Infinity < [All other negative integers]  //Likewise, negative infinity is the smallest integer
+Infinity > 'All other positive integers';  //Infinity represents the largest integer
+-Infinity < 'All other negative integers';  //Likewise, negative infinity is the smallest integer
 console.log(typeof Infinity); //returns 'number'
 
 
