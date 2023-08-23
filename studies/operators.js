@@ -75,6 +75,8 @@ delete day; //deletes the variable day;
 // 6. Ternary Conditional Operators
 // The only operator in JavaScript that takes 3 operands, a ternary operator has the form a ? b : c, where a is a conditional expression, which returns b if a resolves to true, or c if it resolves to false.
 
+function unlock(){}
+function lock(){}
 input === 'password' ? unlock() : lock()
 // If the input is equal to the string 'password', function unlock is performed.  
 //If the input is anything other than the string 'password', the function lock is invoked.
