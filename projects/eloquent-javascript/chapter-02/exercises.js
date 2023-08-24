@@ -47,7 +47,7 @@ function drawChessboard(dim) {
     }
     board.push(line);
   }
-  return board.join('\n');
+  console.log(board.join('\n') + '\n');
 }
 
 ////////////////////////////////////////////////////////////////////////////////
