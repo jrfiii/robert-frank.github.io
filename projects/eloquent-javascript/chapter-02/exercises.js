@@ -39,8 +39,11 @@ function drawChessboard(dim) {
   for (let x = 0; x < dim; x++) {
     let line = '';
     for (let y = 0; y < dim; y++) {
-      if((x + y) % 2 === 0){line += ' ';}
-      else {line += '#';}
+      if((x + y) % 2 === 0) {
+        line += ' ';
+      } else {
+        line += '#';
+      }
     }
     board.push(line);
   }
