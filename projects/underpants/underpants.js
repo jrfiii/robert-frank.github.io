@@ -156,7 +156,7 @@ _.indexOf = function (array, value) {
 _.contains = function (array, value) {
     let bool = false;
     let i = 0;
-    while(bool === false){
+    while(bool === false && i < array.length){
         (array[i] === value) ? bool = true : i++;
     }
     return bool;
@@ -188,8 +188,7 @@ _.each = function(collection, func){
             func(collection[key], key, collection);
         }
     }
-}
-
+};
 
 /** _.unique
 * Arguments:
@@ -201,6 +200,15 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (array) {
+    let uniqueArr = [];
+    for(let i = 0; i < array.length; i++) {
+        if(!uniqueArr.includes(array[i])) {
+            uniqueArr.push(array[i]);
+        }
+    }
+    return uniqueArr;
+};
 
 /** _.filter
 * Arguments:
