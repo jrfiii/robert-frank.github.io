@@ -3,7 +3,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-var _ = {};
+var _ = {}; //underscore object
 
 
 /**
@@ -21,6 +21,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value){
+    return value;
+};
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +45,17 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value){
+    if (value === null) { //before default else code block, must sift out null, arrays, and dates that would give inaccurate datatypes when using typeof.
+        return "null";
+    } else if (Array.isArray(value)) { //using previously declared function that uses Array.isArray(value)
+        return "array";
+    } else if (value instanceof Date === true) { //testing for date constructor
+        return "date";
+    } else { //simple datatypes, undefined, and remaining objects return their typeof
+        return typeof value;
+    }
+};
 
 /** _.first
 * Arguments:
@@ -61,6 +75,14 @@ var _ = {};
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function (array, number) {
+    if(!Array.isArray(array) || number < 0)return [];
+    else if (typeof number !== 'number') {
+        return array[0];
+    } else {
+        return array.slice(0, number);
+    }
+};
 
 /** _.last
 * Arguments:
@@ -80,6 +102,16 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (array, number) {
+    if(!Array.isArray(array) || number < 0)return [];
+    else if (typeof number !== 'number') {
+        return array[array.length - 1];
+    } else if (number > array.length) {
+        return array;
+    } else {
+        return array.slice(array.length - number, array.length);
+    }
+};
 
 /** _.indexOf
 * Arguments:
@@ -97,6 +129,14 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function (array, value) {
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] === value){
+            return i;
+        }
+    }
+    return -1;
+};
 
 /** _.contains
 * Arguments:
@@ -113,6 +153,14 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function (array, value) {
+    let bool = false;
+    let i = 0;
+    while(bool === false){
+        (array[i] === value) ? bool = true : i++;
+    }
+    return bool;
+};
 
 /** _.each
 * Arguments:
@@ -129,6 +177,18 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
+_.each = function(collection, func){
+    if(Array.isArray(collection)){
+        for(let i = 0; i < collection.length; i++){
+            func(collection[i], i, collection);
+        }
+    } else {
+        for(let key in collection) {
+            func(collection[key], key, collection);
+        }
+    }
+}
 
 
 /** _.unique
