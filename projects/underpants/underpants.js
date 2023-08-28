@@ -226,6 +226,16 @@ _.unique = function (array) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if(func(array[i], i, array) === true) {
+            output.push(array[i]);
+        }
+    }
+    return output;
+};
+
 
 /** _.reject
 * Arguments:
@@ -240,6 +250,15 @@ _.unique = function (array) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function (array, func) {
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if(func(array[i], i, array) === false) {
+            output.push(array[i]);
+        }
+    }
+    return output;
+};
 
 /** _.partition
 * Arguments:
@@ -260,6 +279,20 @@ _.unique = function (array) {
 }
 */
 
+_.partition = function (array, func) {
+    let truthyArr = [];
+    let falsyArr = [];
+    for (let i = 0; i < array.length; i++) {
+        if(func(array[i], i, array) === true) {
+            truthyArr.push(array[i]);
+        }
+        if(func(array[i], i, array) === false) {
+            falsyArr.push(array[i]);
+        }
+    }
+    return [truthyArr, falsyArr];
+};
+
 
 /** _.map
 * Arguments:
@@ -277,6 +310,19 @@ _.unique = function (array) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (collection, func) {
+    let mappedArr = [];
+    if(Array.isArray(collection)){
+        for(let i = 0; i < collection.length; i++){
+            mappedArr.push(func(collection[i], i, collection));
+        }
+    } else {
+        for(let key in collection) {
+            mappedArr.push(func(collection[key], key, collection));
+        }
+    }
+    return mappedArr;
+};
 
 /** _.pluck
 * Arguments:
