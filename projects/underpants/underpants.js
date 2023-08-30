@@ -234,10 +234,10 @@ _.unique = function (array) {
 */
 
 _.filter = function(array, func) {
-    let output = [];
+    let output = [];    //initialize empty array to be output
     for (let i = 0; i < array.length; i++) {
         if(func(array[i], i, array) === true) {
-            output.push(array[i]);
+            output.push(array[i]);  //adds element if it returns a true value from input test function
         }
     }
     return output;
@@ -258,10 +258,10 @@ _.filter = function(array, func) {
 */
 
 _.reject = function (array, func) {
-    let output = [];
+    let output = [];    //initialize an empty array to be the eventual output
     for (let i = 0; i < array.length; i++) {
         if(func(array[i], i, array) === false) {
-            output.push(array[i]);
+            output.push(array[i]);  //adds element to output array if it is 'rejected' by test, or if it returns a false value from func
         }
     }
     return output;
@@ -287,8 +287,8 @@ _.reject = function (array, func) {
 */
 
 _.partition = function (array, func) {
-    let truthyArr = [];
-    let falsyArr = [];
+    let truthyArr = [];     //empty array to contain elements that return true from test func
+    let falsyArr = [];      //empty array to contain elements that return false from test func
     for (let i = 0; i < array.length; i++) {
         if(func(array[i], i, array) === true) {
             truthyArr.push(array[i]);
@@ -297,7 +297,7 @@ _.partition = function (array, func) {
             falsyArr.push(array[i]);
         }
     }
-    return [truthyArr, falsyArr];
+    return [truthyArr, falsyArr];   //basically a combination of filter and reject in one
 };
 
 
@@ -318,18 +318,19 @@ _.partition = function (array, func) {
 */
 
 _.map = function (collection, func) {
-    let mappedArr = [];
-    if(Array.isArray(collection)){
-        for(let i = 0; i < collection.length; i++){
+    let mappedArr = []; //empty array to be eventual output
+    if(Array.isArray(collection)){  //if statement for arrays
+        for(let i = 0; i < collection.length; i++){ //for loop for collections with indices
             mappedArr.push(func(collection[i], i, collection));
         }
-    } else {
-        for(let key in collection) {
+    } else {    //else statement for objects
+        for(let key in collection) {    //for-in loop for each key of object
             mappedArr.push(func(collection[key], key, collection));
         }
     }
     return mappedArr;
 };
+
 
 /** _.pluck
 * Arguments:
@@ -343,10 +344,12 @@ _.map = function (collection, func) {
 */
 
 _.pluck = function(array, property) {
+    //use of map to return an array of each object's value at whatever input property is passed
     return _.map(array, function(obj){
         return obj[property];
     });
 };
+
 
 /** _.every
 * Arguments:
@@ -370,33 +373,39 @@ _.pluck = function(array, property) {
 */
 
 _.every = function(collection, func) {
+    //If not function is passed into every, merely tests the truthiness of each element of array
     if(func === undefined && Array.isArray(collection)){
         for(let i = 0; i < collection.length; i++){
             if(!Boolean(collection[i])){
-                return false;
+                return false;       //if even one element is falsy, returns false
             };
         }
+        //if function is defined, and collection is array
     } else if (Array.isArray(collection)) {
         for(let i = 0; i < collection.length; i++){
+            //tests every element of array with input function
             if(func(collection[i], i, collection) === false) {
-                return false;
+                return false;       //if even one element tests false, returns false
             }
         }
+        //if function is undefined and collection is object, merely tess the truthiness of all values at each key of object
     } else if (func === undefined) {
         for(let key in collection) {
             if(!Boolean(collection[key])){
-                return false;
+                return false;       //if even one value is falsy, returns false
             }
         }
+        //if function is defined, and collection is object, tests each value at every key with input function
     } else {
         for(let key in collection) {
             if(func(collection[key], key, collection) === false) {
-                return false;
+                return false;   //returns false if even one value returns false from test function
             }
         }
     }
     return true;
 };
+
 
 /** _.some
 * Arguments:
@@ -420,33 +429,38 @@ _.every = function(collection, func) {
 */
 
 _.some = function(collection, func) {
-    if(func === undefined && Array.isArray(collection)){
-        for(let i = 0; i < collection.length; i++){
-            if(Boolean(collection[i])){
-                return true;
-            };
-        }
-    } else if (Array.isArray(collection)) {
-        for(let i = 0; i < collection.length; i++){
-            if(func(collection[i], i, collection) === true) {
-                return true;
-            }
-        }
-    } else if (func === undefined) {
-        for(let key in collection) {
-            if(Boolean(collection[key])){
-                return true;
-            }
-        }
-    } else {
-        for(let key in collection) {
-            if(func(collection[key], key, collection) === true) {
-                return true;
-            }
+ //if no function in invocation and collection is array, tests truthiness of each element
+ if(func === undefined && Array.isArray(collection)){
+    for(let i = 0; i < collection.length; i++){
+        if(Boolean(collection[i])){
+            return true;    //returns true if at least one element is truthy
+        };
+    }
+    //if function is defined and collection is array
+} else if (Array.isArray(collection)) {
+    for(let i = 0; i < collection.length; i++){
+        if(func(collection[i], i, collection) === true) {
+            return true;    //returns true if at least one element returns true from test func
         }
     }
-    return false;
+    //if collection is object, but no function is defined, tests each value at every key of object
+} else if (func === undefined) {
+    for(let key in collection) {
+        if(Boolean(collection[key])){
+            return true;    //returns true if at least one key-value is truthy
+        }
+    }
+    //if function is defined, passes value at each key into test func
+} else {
+    for(let key in collection) {
+        if(func(collection[key], key, collection) === true) {
+            return true;    //returns true if even one key-value returns true from test func.
+        }
+    }
+}
+return false;   //only returns false if all elements fail to pass test func or if all values are falsy.
 };
+
 
 /** _.reduce
 * Arguments:
@@ -468,21 +482,22 @@ _.some = function(collection, func) {
 */
 
 _.reduce = function (array, func, seed) {
-    let previousResult;
-    if (seed === undefined) {
+    let previousResult; //declared variable to be updated with each iteration of for loop 
+    if (seed === undefined) {   //if no seed parameter is passed, the starting 'seed' is the first element at the zero index of array.
         previousResult = array[0];
-        for (let i = 1; i < array.length; i++) {
-            previousResult = func(previousResult, array[i], i);
+        for (let i = 1; i < array.length; i++) {    //for loop then starts on 2nd element
+            previousResult = func(previousResult, array[i], i); //previousResult updated with each iteration
         }
         return previousResult;
     } else {
-        previousResult = seed;
-        for(let i = 0; i < array.length; i++) {
-            previousResult = func(previousResult, array[i], i);
+        previousResult = seed;  //if seed is defined, assigns value of seed to previousResult
+        for(let i = 0; i < array.length; i++) {     //for loop starts on 1st element if seed is defined.
+            previousResult = func(previousResult, array[i], i); //updates previousResult with each iteration
         }
         return previousResult;
     }
 };
+
 
 /** _.extend
 * Arguments:
@@ -499,14 +514,14 @@ _.reduce = function (array, func, seed) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function (...objs) {
-    let primeObj = objs[0];
-    for(let i = 1; i < objs.length; i++) {
-        for(let key in objs[i]) {
-            primeObj[key] = objs[i][key];
+_.extend = function (...objs) { //rest parameter used since any number of objects can be passed into function.
+    let primeObj = objs[0]; //initializes the zero index of objs array as the primeObj that all subsequent objects will be added to.
+    for(let i = 1; i < objs.length; i++) {  //iterates through remaining elements of parameter array 
+        for(let key in objs[i]) {           //iterates through each key of each object 
+            primeObj[key] = objs[i][key];   //updates primeObj with key-value of each object
         }
     }
-    return primeObj;
+    return primeObj; //returns singular object with all object value pairs assigned and/or updated from all following objects
 }
 
 //////////////////////////////////////////////////////////////////////
