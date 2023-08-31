@@ -76,7 +76,16 @@ var friendsCount = function(array, customer) {
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function (array) {
+    let output = {};
+    array.map(customer => {
+        if (!output.hasOwnProperty(customer.gender)) {
+          output[customer.gender] = 1;
+        }
+        else {output[customer.gender]++;}
+    });
+    return output;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
