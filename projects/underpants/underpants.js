@@ -488,14 +488,13 @@ _.reduce = function (array, func, seed) {
         for (let i = 1; i < array.length; i++) {    //for loop then starts on 2nd element
             previousResult = func(previousResult, array[i], i); //previousResult updated with each iteration
         }
-        return previousResult;
     } else {
         previousResult = seed;  //if seed is defined, assigns value of seed to previousResult
         for(let i = 0; i < array.length; i++) {     //for loop starts on 1st element if seed is defined.
             previousResult = func(previousResult, array[i], i); //updates previousResult with each iteration
         }
-        return previousResult;
     }
+    return previousResult;
 };
 
 
