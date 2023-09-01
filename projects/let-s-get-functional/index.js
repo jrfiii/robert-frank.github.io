@@ -74,7 +74,24 @@ var friendsCount = function(array, customer) {
     return friendOf.map(person => person.name);
 };
 
-var topThreeTags;
+var topThreeTags = function (array, number = 3) {
+    let output = [];
+    let tagObj = {};
+    array.map(customer => {
+      customer.tags.map(tag => {
+        if (!tagObj.hasOwnProperty(tag)) {
+          tagObj[tag] = 1;
+        } else {tagObj[tag]++;}
+      });
+    });
+    for(let count in tagObj) {
+      output.push([count, tagObj[count]]);
+    }
+    output.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    return output.slice(0, number).map(tag => tag[0]);
+};
 
 var genderCount = function (array) {
     let output = {};
