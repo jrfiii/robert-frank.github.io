@@ -55,7 +55,7 @@ var youngestCustomer = function(array) {
 };
 
 var averageBalance = function(array) {
-    return array.map(customer => parseFloat(customer.balance.slice(1, 2) + customer.balance.slice(3)))
+    return array.map(customer => parseFloat(customer.balance.replace(/[$,]/g, '')))
                 .reduce((sum, customer) => sum += customer) / array.length;
 };
 
