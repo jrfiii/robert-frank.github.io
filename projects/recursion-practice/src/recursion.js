@@ -22,11 +22,11 @@ var sum = function(array, total=0) {
 //NOT REQUIRED FOR 100%
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
-// var arraySum = function(array, total = 0) {
-//   if(array.length === 0){return total;}
-//   total += sum(array[0]);       //don't think this works for triple or more-nested arrays
-//   return sum(array.slice(1), total);
-// };
+var arraySum = function(array, total = 0) {
+  // if(array.length === 0){return total;}
+  // total += sum(array[0]);       //don't think this works for triple or more-nested arrays
+  // return sum(array.slice(1), total);
+};
 
 // 4. Check if a number is even.
 var isEven = function(n) {
