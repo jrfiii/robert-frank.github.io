@@ -24,8 +24,12 @@ var sum = function(array, total=0) {
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array, total = 0) {
   // if(array.length === 0){return total;}
-  // total += sum(array[0]);       //don't think this works for triple or more-nested arrays
-  // return sum(array.slice(1), total);
+  // if(Array.isArray(array[0])){
+  //   total += sum(array[0]);       //don't think this works for triple or more-nested arrays
+  // } else {
+  //   total += array[0];
+  // }
+  // return arraySum(array.slice(1), total);
 };
 
 // 4. Check if a number is even.
@@ -119,6 +123,18 @@ var palindrome = function(str){
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  // if (y === 0) {return "NaN";}
+  // if (x === 0) {return 0;}
+  // if (x === -0) {return -0;}
+  // if (x < 0 && y < 0 && x > y) {return x;}
+  // if (x < 0 && y > 0) {
+  //   if(-x < y) {return x;}
+  //   return modulo(x + y, y);
+  // }
+  // if (x > 0 && y > 0) {
+  //   if(x < y) {return x - y;}
+  //   return modulo(x - y, y);
+  // }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
