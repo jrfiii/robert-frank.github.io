@@ -97,7 +97,19 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, revStr = "") {
+//should ignore spaces and capital letters
+var palindrome = function(str){
+  if(str.length === 0 || str.length === 1){
+    return true;
+  } else if (str[0] === " ") {
+    return palindrome(str.slice(1));
+  } else if (str[str.length - 1] === " ") {
+    return palindrome(str.slice(0, str.length - 1));
+  } else if (str[0].toLowerCase() !== str[str.length - 1].toLowerCase()) {
+    return false;
+  } else {
+    return palindrome(str.slice(1, str.length - 1));
+  }
 };
 
 //NOT REQUIRED FOR 100%
