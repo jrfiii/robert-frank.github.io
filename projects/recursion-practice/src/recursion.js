@@ -340,45 +340,47 @@ var alternateSign = function(array, output = []) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-// var numToText = function(str, convert = "") {
-//   let anyDigit = /\d/;
-//   if (string.length === 0) return convert;
-//   if (str[0] === anyDigit) {
-//     switch (str[0]) {
-//       case 1:
-//         convert += "one";
-//         break;
-//       case 2:
-//         convert += "two";
-//         break;
-//       case 3:
-//         convert += "three";
-//         break;
-//       case 4:
-//         convert += "four"
-//         break;
-//       case 5:
-//         convert += "five";
-//         break;
-//       case 6:
-//         convert += "six
-//         break;"
-//       case 7:
-//         convert += "seven";
-//         break;
-//       case 8:
-//         convert += "eight";
-//         break;
-//       case 9:
-//         convert += "nine";
-//         break;
-//     }
-//   } else {
-//     convert += str[0];
-//   }
-//   return numToText(str.slice(1), convert);
-// };
-
+var numToText = function(str, convert = "") {
+  let containsDigit = function(char) {
+    anyDigit = /\d/;
+    return anyDigit.test(char);
+  }
+  if (str.length === 0) return convert;
+  if (containsDigit(str[0])) {
+    switch (str[0]) {
+      case "1":
+        convert += "one";
+        break;
+      case "2":
+        convert += "two";
+        break;
+      case "3":
+        convert += "three";
+        break;
+      case "4":
+        convert += "four"
+        break;
+      case "5":
+        convert += "five";
+        break;
+      case "6":
+        convert += "six";
+        break;
+      case "7":
+        convert += "seven";
+        break;
+      case "8":
+        convert += "eight";
+        break;
+      case "9":
+        convert += "nine";
+        break;
+    }
+  } else {
+    convert += str[0];
+  }
+  return numToText(str.slice(1), convert);
+};
 // *** EXTRA CREDIT ***
 
 // 36. Return the number of times a tag occurs in the DOM.
