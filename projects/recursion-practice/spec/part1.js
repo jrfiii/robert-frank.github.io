@@ -990,7 +990,7 @@
 
 
 
-    xdescribe('29. Flatten nested arrays', function() {
+    describe('29. Flatten nested arrays', function() {
 
       it('should return an array', function() {
         expect(Array.isArray(flatten([1,[2],[3,[[4]]],5]))).to.equal(true);
