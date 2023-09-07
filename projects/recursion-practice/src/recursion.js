@@ -122,19 +122,20 @@ var palindrome = function(str){
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+// -4 % 2 = -0 strangely, so need a way to return a negative zero.(explanation of line 129)
+// 7 % -5 = 2, which is also 7 % 5 (explanation of line 133)
 var modulo = function(x, y) {
-  // if (y === 0) {return "NaN";}
-  // if (x === 0) {return 0;}
-  // if (x === -0) {return -0;}
-  // if (x < 0 && y < 0 && x > y) {return x;}
-  // if (x < 0 && y > 0) {
-  //   if(-x < y) {return x;}
-  //   return modulo(x + y, y);
-  // }
-  // if (x > 0 && y > 0) {
-  //   if(x < y) {return x - y;}
-  //   return modulo(x - y, y);
-  // }
+  if (y === 0) {return "NaN";}
+  if (x < 0) {
+    return -modulo(-x, y);  
+  } 
+  if(y < 0) {
+    return modulo(x, -y); 
+  }
+  if(x < y) {
+    return x;
+  }
+  return modulo(x - y, y);
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
@@ -154,6 +155,7 @@ var multiply = function(x, y) {
 //NOT REQUIRED FOR 100%
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
+//
 var divide = function(x, y) {
 };
 
@@ -231,6 +233,7 @@ var rMap = function(array, callback, mapArr = []) {
 // countKeysInObj(testobj, 'r') // 1
 // countKeysInObj(testobj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+
 };
 
 //NOT REQUIRED FOR 100%
@@ -253,7 +256,11 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // Example:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34.....
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
-var fibonacci = function(n) {
+var fibonacci = function(n, fibo = [0, 1]) {
+  if (n <= 0) {return null;}
+  if (n === fibo.length - 1) {return fibo;}
+  fibo[fibo.length] = fibo[fibo.length - 2] + fibo[fibo.length - 1];
+  return fibonacci(n, fibo);
 };
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
@@ -335,7 +342,10 @@ var compress = function(list, noConsecutiveDupes = []) {
 // 32. Augment every element in a list with a new value where each element is an array
 // itself.
 // Example: augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
-var augmentElements = function(array, aug) {
+var augmentElements = function(array, aug, output = []) {
+  if (array.length === 0) {return output;}
+  output.push(array[0].concat(aug));
+  return (augmentElements(array.slice(1), aug, output));
 };
 
 // 33. Reduce a series of zeroes to a single 0.

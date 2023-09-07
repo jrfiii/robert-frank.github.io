@@ -402,7 +402,7 @@
 
 
 
-    xdescribe('11. Modulo', function() {
+    describe('11. Modulo', function() {
 
       it('should return a number', function() {
         expect(typeof(modulo(5,2))).to.equal('number');
@@ -850,7 +850,7 @@
     });
 
 
-    xdescribe('24. First n Fibonacci', function() {
+    describe('24. First n Fibonacci', function() {
 
       it('should return an array', function() {
         expect(Array.isArray(fibonacci(5))).to.equal(true);
@@ -1073,7 +1073,7 @@
 
 
 
-    xdescribe('32. Augment each element in nested arrays', function() {
+    describe('32. Augment each element in nested arrays', function() {
 
       it('should return an array', function() {
         expect(Array.isArray(augmentElements([[],[3],[7]], 5))).to.equal(true);
