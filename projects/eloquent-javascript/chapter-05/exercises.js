@@ -11,23 +11,53 @@ function flatten(arr) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function loop(val, test, update, body) {
- 
+ while(test(val)){
+  body(val);
+  val = update(val);
+ }
+ return val; 
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  return array.reduce((bool, cur) => {
+    if (bool === false) {return false;}
+    bool = test(cur);
+    return bool;
+  }, true);
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(str) {
+  let ltr = [];
+  let rtl = [];
+  let ttb = [];
+  for(let i = 0; i < str.length; i++){
+    //create a variable call script and assign it the result of invoking helper function characterScript
+    let script = characterScript(str.charCodeAt(i));  //returns script object from SCRIPTS array of objects
+    if (script !== null){
+      if(script.direction === "ltr"){
+        ltr.push(str[i]);
+      } else if (script.direction === "rtl"){
+        rtl.push(str[i]);
+      } else if (script.direction === "ttb") {
+        ttb.push(str[i]);
+      }
+    }
+  }
+  if (ltr.length > rtl.length && ltr.length > ttb.length) {
+    return "ltr";
+  } else if (rtl.length > ltr.length && rtl.length >> ttb.length) {
+    return "rtl";
+  } else {
+    return "ttb";
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
