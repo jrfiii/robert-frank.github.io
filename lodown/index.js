@@ -5,8 +5,8 @@
 
 /**
  * identity: function takes in value and returns it unchanged.
- * @param {any data-type} value 
- * @returns input value unchanged
+ * @param value {any datatype} Function takes in value 
+ * @returns {any datatype} Function returns input value unchanged
  */
 function identity (value){
     return value;
@@ -16,8 +16,8 @@ module.exports.identity = identity;
 
 /**
  * typeOf: function that accepts value of any datatype and returns its datatype as a string
- * @param {any datatype} values
- * @returns a string representation of the datatype of value
+ * @param value {any datatype} Function takes in a value of 
+ * @returns { String } Function returns a string representation of the datatype of value
 */
 function typeOf(value){
     if (value === null) { //before default else code block, must sift out null, arrays, and dates that would give inaccurate datatypes when using typeof.
@@ -35,9 +35,9 @@ module.exports.typeOf = typeOf;
 
 /**
  * first: function returns a certain number of elements from the start of an array.
- * @param {array} array if argument is not an array, returns []
- * @param {number} number if argument is not a number, returns zero index of array
- * @returns however many elements from the start of an array, as determined by number parameter
+ * @param array { Array } Function takes in input array
+ * @param number { Number } Function takes in number specifying how many elements to return from beginning
+ * @returns { Array } Function returns however many elements from the start of an array, as determined by number parameter
  */
 function first (array, number) {
    //tests for expected inputs, returns an empty array if array isn't an array or if number is negative
@@ -53,9 +53,9 @@ module.exports.first = first;
 
 /**
  * last: function returns a certain number of elements from the end of an array.
- * @param {array} array if input is not array, returns empty array []
- * @param {number} number if input is not a number, returns the zero index of array
- * @returns however many elements from the end of an array, as determined by number parameter
+ * @param array { Array } Function takes in input array
+ * @param number { Number }  Function takes in number specifying number of elements to return from end of array
+ * @returns { Array } Function returns however many elements from the end of an array, as determined by number parameter
  */
 function last (array, number) {
     //tests for expected inputs, returns an empty array if array isn't an array or if number is negative
@@ -74,10 +74,10 @@ module.exports.last = last;
 
 /**
  * indexOf: function that returns the index of the first occurrence of the value that is found while iterating through an array, either from the start or from a given index parameter
- * @param {array} array that is an array which is searched
- * @param {primitive value} value target value that is a simple datatype that is compared for strict equality in the search 
- * @param {number} idx if given as parameter, modifies the start point of the search. if not given, search starts at zero index
- * @returns the index at which the value is found in array. if value does not occur in array, returns -1.
+ * @param array { Array } Function takes in input array that is searched
+ * @param value { String, Number, Boolean } Function takes in primitive value target that is a simple datatype that is compared for strict equality in the search 
+ * @param idx { Number } Function takes in number if given as parameter, modifies the start point of the search. if not given, search starts at zero index
+ * @returns { Number } Function returns a number value representing the index at which the value is found in array. if value does not occur in array, returns -1.
  */
 function indexOf (array, value, idx) {
     //tests if idx is passed into function and assigns i its value or 0 if it's undefined
@@ -93,9 +93,9 @@ module.exports.indexOf = indexOf;
 
 /**
  * contains: function that returns a boolean value whether or not an array contains a given simple value
- * @param {array} array to be searched
- * @param {primitive datatype} value to be searched for, must be simple value because function compares strict equality
- * @returns boolean value of true if value is found or false if value is not encourntered
+ * @param array { Array } Function take in input array to be searched
+ * @param value { String, Number, Boolean } Function takes in primitive value to be searched for, must be simple value because function compares strict equality
+ * @returns { Boolean } Function returns boolean value of true if value is found or false if value is not encountered
  */
 function contains (array, value) {
     let bool = false;   //initializing bool to false
@@ -111,9 +111,9 @@ module.exports.contains = contains;
 
 /**
  * each: Designed to loop over a collection, Array or Object, and applies the func Function to each value in the collection.
- * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} func: The Function to be applied to each value in the collection
- * @returns nothing, has no return statement
+ * @param collection { Array, Object } Function takes in input collection over which to iterate.
+ * @param func { Function } Function takes in input function to be applied to each value in the collection
+ * @returns { Undefined } Function returns undefined as it has no return statement
  */
 function each (collection, func){
     //first if statement for any arrays that are passed into function as collection
@@ -133,8 +133,8 @@ module.exports.each = each;
 
 /**
  * unique: function that culls an array of any duplicated or redundant elements
- * @param {array} array to be sifted through
- * @returns new array containing only unique elements from input array
+ * @param array { Array } Function takes in input array to be sifted through
+ * @returns { Array } Function returns new array containing only unique elements from input array
  */
 function unique (array) {
     let uniqueArr = []; //empty array initialized to be output
@@ -150,9 +150,9 @@ module.exports.unique = unique;
 
 /**
  * filter: function to pass an array through a test and return those elements that 'pass' the test, or return a true value from the test function
- * @param {array} array to be tested by second parameter func
- * @param {function} func test function to be used on each element of above array, returns a boolean 
- * @returns a new array with only the elements from the input array that pass the filter test function.
+ * @param array { Array } Function takes in input array to be tested by second parameter func
+ * @param func { Function } Function takes in callback function to be used as a test on each element of above array, returns a boolean 
+ * @returns { Array } Function returns a new array with only the elements from the input array that pass the filter test function, or that return a truthy value from the callback function.
  */
 function filter (array, func) {
     let output = [];    //initialize empty array to be output
@@ -168,9 +168,9 @@ module.exports.filter = filter;
 
 /**
  * reject: function that returns an array of elements from input array that DO NOT return a true value from an input test function.,
- * @param {array} array to be iterated over with input test function
- * @param {function} func function that will 'test' each input value from above array and return a boolean
- * @returns a new array containing elements from input array that return false values from test function, or those elements that 'fail' the input test.
+ * @param array { Array } Function takes in input array to be iterated over with input test function
+ * @param func { Function } Function takes in callback function that will 'test' each input value from above array and return a boolean
+ * @returns { Array } Function returns a new array containing elements from input array that return false values from test function, or those elements that 'fail' the input test.
  */
 function reject (array, func) {
     let output = [];    //initialize an empty array to be the eventual output
@@ -186,9 +186,9 @@ module.exports.reject = reject;
 
 /**
  * partition: function that divides an input array into two new arrays of those that pass an input test func and those that do not pass.
- * @param {array} array to be iterated over, with each element passed through a test func
- * @param {function} func test function to return a boolean value
- * @returns two arrays, the first of elements from input array that return true values from test func, and the second of the remaining values that return a false value from input test func.
+ * @param array { Array } Function takes in input array to be iterated over, with each element passed through a test func
+ * @param func { Function } Function takes in callback function that returns a boolean value
+ * @returns { Array } Function returns two arrays, the first of elements from input array that return true values from test func, and the second of the remaining values that return a false value from input test func.
  */
 function partition (array, func) {
     let truthyArr = [];     //empty array to contain elements that return true from test func
@@ -209,9 +209,9 @@ module.exports.partition = partition;
 
 /**
  * map: takes an input collection and passes each value through a function to return a new, transformed collection
- * @param {array or object} collection of either array or object
- * @param {function} func function that each element or property of above input will be passed through
- * @returns new array with return values from passing input collection through input function
+ * @param collection { Array, Object } Function takes in input collection of either array or object
+ * @param fuc { Function } Function takes in callback function that each element or property of above input will be passed through
+ * @returns { Array } Function returns new array with return values from passing input collection through input function
  */
 function map (collection, func) {
     let mappedArr = []; //empty array to be eventual output
@@ -231,9 +231,9 @@ module.exports.map = map;
 
 /**
  * pluck: function that iterates over an array of objects and pulls the value at property from each object
- * @param {array of objects} array of objects
- * @param {string} property that should exist in each object of each element of above array.
- * @returns a new array of values from the input property of each object
+ * @param array { Array } Function takes in an array of objects
+ * @param property { String } Function takes in string value that represents a property that should exist in each object of each element of above array.
+ * @returns { Array } Function returns a new array of values from the input property of each object
  */
 function pluck (array, property) {
     //use of map to return an array of each object's value at whatever input property is passed
@@ -247,12 +247,12 @@ module.exports.pluck = pluck;
 
 /**
  * every: function that passes every element of array or every key value of object through a test function. EVERY value must return true from test to return true, else returns false.
- * @param {array or object} collection that test is applied to
- * @param {function} func is a test function that returns a boolean value
- * @returns true only if every value returns true from test function, or if every value is truthy if no function is passed.
+ * @param collection { Array, Object } Function takes in input collection that test is applied to
+ * @param func { Function } Function takes in callback function that is a test function that returns a boolean value
+ * @returns { Boolean } Function returns a boolean value.  Returns true only if every value returns true from test function, or if every value is truthy if no function is passed.
  */
 function every (collection, func) {
-    //If not function is passed into every, merely tests the truthiness of each element of array
+    //If no function is passed into every, merely tests the truthiness of each element of array
     if(func === undefined && Array.isArray(collection)){
         for(let i = 0; i < collection.length; i++){
             if(!Boolean(collection[i])){
@@ -289,9 +289,9 @@ module.exports.every = every;
 
 /**
  * some: function that passes every value from array or object into a test function, returns true if at least one element passes test. returns false if all elements fail.
- * @param {array or object} collection array or object to be tested with following function
- * @param {function} func test function that each element of above collection is passed into.
- * @returns true if at least one element returns true value from test function, else returns false.
+ * @param collection { Array, Object} Function takes in input collection to be tested with following function
+ * @param func { Function } Function takes in callback function that tests each element of above collection.
+ * @returns { Boolean } Function returns boolean value.  Returns true if at least one element returns true value from test function, else returns false.
  */
 function some (collection, func) {
     //if no function in invocation and collection is array, tests truthiness of each element
@@ -331,10 +331,10 @@ module.exports.some = some;
 
 /**
  * reduce: function that passes each element through a function that updates an 'accumulating' variable on each iteration through array and returns the final result.
- * @param {array} array upon which function is passed over each element.
- * @param {function} func that updates a 'compounding' result with each return value of function as it iterates through input array.
- * @param {value} seed starting value for the 'previousResult' of above function, if defined in function.
- * @returns the final result of passing each previous result into each successive function call as it iteraters through input array.
+ * @param array { Array } Function takes in input array
+ * @param func { Function } Function takes in callback function that updates a 'compounding' result with each return value of function as it iterates through input array.
+ * @param seed { Any datatype } Function takes in seed starting value for the 'previousResult' of above function, if defined in function.
+ * @returns { Any datatype } Function returns the final result of passing each previous result into each successive function call as it iteraters through input array.
  */
 function reduce (array, func, seed) {
     let previousResult; //declared variable to be updated with each iteration of for loop 
@@ -356,8 +356,8 @@ module.exports.reduce = reduce;
 
 /**
  * extend: function that copies all key-value pairs from any number of objects to first object that is passed as parameter into function. Assigns keys to first object or re-assigns value if key already exists in order that objects are listed as paramters.
- * @param  {an array of any number of objects} objs 
- * @returns a single object that has been assigned and/or re-assigned all the key-value pairs from all objects passed into function
+ * @param  objs { Array } Function takes in array of any number of objects 
+ * @returns { Object } Function returns a single object that has been assigned and/or re-assigned all the key-value pairs from all objects passed into function
  */
 function extend (...objs) { //rest parameter used since any number of objects can be passed into function.
     let primeObj = objs[0]; //initializes the zero index of objs array as the primeObj that all subsequent objects will be added to.
