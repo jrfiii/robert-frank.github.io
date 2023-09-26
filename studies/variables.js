@@ -41,6 +41,25 @@ function doSomething() {
 // console.log(varTest); //var is function-scoped, so not visible in the global scope since it was declared in the function block 
 doSomething();
 
+if (true) {
+  let blockScopedLet = "I'm only accessible inside this code block";
+  const blockScopedConst = 9;
+  /** 
+  console.log(blockScopedLet); //this code will successfully access the variable declared with "let" 
+  console.log(blockScopedConst); // "const" variables behave the same as let variables. These two console.log functions will work as the variables they reference are in the same code block.
+  */
+}
+/** 
+console.log(blockScopedLet); //This code however will return an error
+console.log(blockScopedConst); //as will this one.
+*/
+
+//On top of the differing scopes between variables declared with var and variables declared with let or const, another difference is that let and const variables cannot be redeclared.  This will cause an error, while var variables can be redeclared.  While your code will still run, redeclaring a var variable could have consequences with the expected behavior of a function or program.
+
+let z = 9;
+// let z = 10; //This would return a SyntaxError warning you that the variable z has already been declared.
+const constant = 1;
+// constant = 2; //The difference between let and const is that while neither can be redeclared, const variables cannot even be reassigned.  This will throw a TypeError informing you of this particularity of const variables.
 
 // 3. Hoisting
 // Hoisting refers to the process that our higher-levl code undergoes when interpreted by a compiler.  In simple terms, function and var variable declarations are brought to the top of each scope.  Function declarations have precedent over variables, and the entire code block of a function is hoisted. Functions can be invoked anywhere because their declaration and ensuing code blocks are always hoisted.  However, with var variables, only the declaration is hoisted to the top.  That variable is assigned a value of 'undefined' until the assignment is encountered when executing the code. In a similar sense, functions expressions are only hoisted like variables, only the identifier is hoisted, not its assignment.
