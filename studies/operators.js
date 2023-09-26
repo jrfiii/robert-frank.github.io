@@ -16,6 +16,8 @@ let bool = false;
 // There are also a variety of arithmetic assingment operators, like '+=', '-=', '*=', '/='.
 
 num += 5; // the same as num = num + 5;
+num -= 3; // the same as num = num - 3;
+num *= 2; // the same as num = num * 2;
 num /= 3; // the same as num = num / 3;
 
 // 2. Arithmetic Operators
