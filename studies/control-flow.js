@@ -32,7 +32,8 @@ if(2 > 1) {
   
   // 3. Else-if
   // Okay, one of our border collies named "If" has guided our code flock successfully through one gate of the pasture into an "Else" field.  But what if we need to sort and refine our code further before we get to this final code block.  We can chain together conditionals with a pack of border collies called else-if statements.
-  
+  // To further illustrate the control flow of a large chain of conditional statements, we can think of the code block behind conditional statements that evaluate to false as being behind closed gates.  When the condition evaluates to a truthy value, the gate is opened and our program will run the code behind that open gate.  When chaining together if-else if-else statements, as soon as one open gate is found (or the conditional statement evaluates to true), the rest of the chain is ignored, and the code block following the first true condition will be the only that is run.  In other words, a final else statement would only execute if all previous if-else if statements had evaluated to false. If any one evaluates to true, the chain is broken and the code block following whichever truthy condition executes.
+
   if(false) {
     //this is skipped
   } else if (false) {
