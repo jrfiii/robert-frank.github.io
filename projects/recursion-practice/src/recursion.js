@@ -166,6 +166,13 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+  if (x < 0 || y < 0) {return null;} 
+  else if (x === 0) {return y;}
+  else if (y === 0) {return x;}
+  else if (x < y) {return gcd(y, x);}
+  else {
+    return gcd(y, x % y);
+  }
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -233,7 +240,18 @@ var rMap = function(array, callback, mapArr = []) {
 // countKeysInObj(testobj, 'r') // 1
 // countKeysInObj(testobj, 'e') // 2
 var countKeysInObj = function(obj, key) {
-
+  let sum = 0;
+  for (let prop in obj) {
+    if (prop === key && typeof obj[prop] === "object") {
+      sum++;
+      sum += countKeysInObj(obj[prop], key)
+    } else if (prop === key) {
+      sum++;
+    } else if (typeof obj[prop] === "object") {
+      sum += countKeysInObj(obj[prop], key);
+    }
+  }
+  return sum;
 };
 
 //NOT REQUIRED FOR 100%
@@ -242,12 +260,33 @@ var countKeysInObj = function(obj, key) {
 // countValuesInObj(testobj, 'r') // 2
 // countValuesInObj(testobj, 'e') // 1
 var countValuesInObj = function(obj, value) {
+  let sum = 0;
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      sum += countValuesInObj(obj[key], value);
+    } else if (obj[key] === value) {
+      sum++;
+    }
+  }
+  return sum;
 };
 
 //NOT REQUIRED FOR 100%
 // 23. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
-var replaceKeysInObj = function(obj, key, newKey) {
+var replaceKeysInObj = function(obj, key, newKey, newObj = {}) {
+  for (let prop in obj) {
+    if (prop === key && typeof obj[prop] === "object") {
+      newObj[newKey] = replaceKeysInObj(obj[prop], key, newKey);
+    } else if (prop === key && typeof obj[prop] !== "object") {
+      newObj[newKey] = obj[prop];
+    } else if (typeof obj[prop] === "object") {
+      newObj[prop] = replaceKeysInObj(obj[prop], key, newKey);
+    } else {
+      newObj[prop] = obj[prop];
+    }
+  }
+  return newObj;
 };
 
 //NOT REQUIRED FOR 100%
@@ -304,7 +343,15 @@ var capitalizeFirst = function(array, output = []) {
 //   e: {e: {e: 2}, ee: 'car'}
 // };
 // nestedEvenSum(obj1); // 10
-var nestedEvenSum = function(obj) {
+var nestedEvenSum = function(obj, sum = 0) {
+  for (let key in obj) {
+    if (typeof obj[key] === "object"){
+      sum += nestedEvenSum(obj[key]);
+    } else if (typeof obj[key] === "number" && obj[key] % 2 === 0) {
+      sum += obj[key];
+    }
+  }
+  return sum;
 };
 
 //NOT REQUIRED FOR 100%

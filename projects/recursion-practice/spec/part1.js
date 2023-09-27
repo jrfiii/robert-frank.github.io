@@ -512,7 +512,7 @@
 
 
 
-    xdescribe('14. Greatest Common Divisor', function() {
+    describe('14. Greatest Common Divisor', function() {
 
       it('should return a number', function() {
         expect(typeof(gcd(4,36))).to.equal('number');
@@ -726,7 +726,7 @@
 
 
 
-    xdescribe('21. Count key in object', function() {
+    describe('21. Count key in object', function() {
       var input = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
 
       it('should return a number', function() {
@@ -756,7 +756,7 @@
 
 
 
-    xdescribe('22. Count value in object', function() {
+    describe('22. Count value in object', function() {
       var input = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
 
       it('should return a number', function() {
@@ -786,7 +786,7 @@
 
 
 
-    xdescribe('23. Replace keys in object', function() {
+    describe('23. Replace keys in object', function() {
 
       var tallyKeys = function(obj) {
         var count = 0;
@@ -961,7 +961,7 @@
 
 
 
-    xdescribe('28. Sum even numbers in nested objects', function() {
+    describe('28. Sum even numbers in nested objects', function() {
       var obj = {
         a: 2,
         b: {b: 2, bb: {b: 3, bb: {b: 2}}},
